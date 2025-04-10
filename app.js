@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverRide('_method'));
 
-app.use('/',contractsRoutes);
+app.use('/contacts',contractsRoutes);
 
 dbConnect();
 
