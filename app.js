@@ -1,7 +1,9 @@
 import express from 'express';
-import contractsRoutes from './routes/contactsRoutes.js';
 import methodOverRide from 'method-override'
+import cookieParser from 'cookie-parser';
 import dbConnect from './config/dbConnect.js';
+import loginRoutes from './routes/loginRoutes.js';
+import contractsRoutes from './routes/contactsRoutes.js';
 
 const app = express();
 
@@ -13,7 +15,10 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(methodOverRide('_method'));
 
+app.use(cookieParser());
+
 app.use('/contacts',contractsRoutes);
+app.use('/', loginRoutes);
 
 dbConnect();
 
